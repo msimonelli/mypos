@@ -1,0 +1,44 @@
+@CHARSET "ISO-8859-1";
+
+/* box to display all button colors */
+#dlg_new_menu>div:nth-child(2)>div:first-child {
+	float: left;
+	margin-left: 10px;
+	width: 180px;
+	height: 200px;
+	border: 1px solid black;
+	overflow: scroll;
+}
+
+
+
+#dlg_new_menu>div>div>div {
+	margin-bottom: 5px;
+}
+
+#dlg_new_menu input[type=text] {
+	width: 120px;
+	color: blue;
+}
+
+#dlg_new_menu span {
+	color: blue;
+}
+
+/* Preview Area */
+#dlg_new_menu>div:first-child>div:nth-child(2) {
+	position: relative;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	width: 400px;
+	height: 200px;
+	border: 1px dashed black;
+}
+
+.image-select {
+	float: left;
+	border: 1 px dashed black;
+	width: 100px;
+	height: 100px;
+}

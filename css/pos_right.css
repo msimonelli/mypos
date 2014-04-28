@@ -1,0 +1,36 @@
+@CHARSET "ISO-8859-1";
+@font-face {
+    font-family: 'Billboard';
+    src: url('Fonts/blue highway free bold.ttf');
+}
+
+div.posLineItemContainer {
+    margin: 10px;
+}
+
+table.posLineItem {
+    position: relative;
+    //background-color: pink;
+    width: 100%;
+}
+
+table.posLineItem .posLineItemDesc {
+    font-size: 20px;
+}
+
+table.posLineItem .posLineItemStyle {
+    font-size: 18px;
+    color: grey;
+}
+
+table.posLineItem .posLineItemCoupon {
+    color: blue;
+}
+
+
+span.posLineItemMsg {
+    font-family: Billboard;
+    //color: lightgrey;
+    color: grey;
+    //background-color: pink;
+}

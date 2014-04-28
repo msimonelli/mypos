@@ -1,0 +1,45 @@
+@CHARSET "ISO-8859-1";
+
+div.pos_top {
+    // margin-left: 180px;
+    float: left;
+    width: 100%;
+}
+
+div.pos_top img {
+    /* background-color: blue; */
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    //margin: 10px;
+    margin-bottom: 0px;
+    //display: flex;
+    //background-color: yellow;
+}
+
+div.pos_top span {
+	display: block;
+    font-family: 'Arial Black';
+    font-size: 13px;
+    color: white;
+}
+
+div.pos_top div:hover img {
+	width: 50px;
+	height: 50px;
+}
+
+div.pos_top div:hover span {
+	color: yellow;
+	font-style: italic;
+}
+
+div.pos_top div {
+	display: table-cell;
+	text-align: center;
+    float: left;
+    width: 70px;
+    margin-right:35px;
+    margin-top: 5px;
+}
+

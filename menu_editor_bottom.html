@@ -1,0 +1,99 @@
+<link rel='stylesheet' href='css/menu_editor_bottom.css' />
+<script src="js/menu_editor_bottom.js"></script>
+
+
+<div class='pos_top'>
+    <div id='new_menu_button'>
+        <img src='images/Bottom Buttons/add.png'>
+        <span>New</span>
+    </div>
+    <div id='delete_menu_button'>
+        <img src='images/Bottom Buttons/subtract.png'>
+        <span>Delete</span>
+    </div>
+    <div id='save_menu'>
+        <img src='images/Ultimate/floppy-disk.png'>
+        <span>Save</span>
+    </div>
+</div>
+
+
+<!-- New Menu dialog -->
+<div id='dlg_new_menu' title='New Menu'>
+	<div style='float:left'>
+		<div>
+    		<div>
+				<label>Title: <input type='text' /></label>
+				<label>Display: <input type='text' /></label>
+			</div>
+			<div>
+				<label>Image: <input type='file' /></label>
+			</div>
+
+		</div>
+		
+		<!-- Preview Area -->
+		<div>
+			<div id='prev_menu_button' class='menu_button menu_button-red'>
+				<div>
+    				<img src='#' />
+				</div>
+				<div>
+					<span></span>
+				</div>
+			</div>
+		</div>
+		
+		<input type='checkbox'>Active</input>
+		
+	</div>
+	
+	<div style='float: left; width:180px'>
+		<div class='bg-select'>
+			<div class='menu_button menu_button-blue option'></div>
+			<div class='menu_button menu_button-green option'></div>
+			<div class='menu_button menu_button-grey option'></div>
+			<div class='menu_button menu_button-lightblue option'></div>
+			<div class='menu_button menu_button-purple option'></div>
+			<div class='menu_button menu_button-red option'></div>
+			<div class='menu_button menu_button-turquois option'></div>
+			<div class='menu_button menu_button-yellow option'></div>
+		</div>
+		
+		<div class='pos_top' style='width:180px;' >
+			<div id='save_menu_button'>
+        		<img src='images/Ultimate/floppy-disk.png'>
+        		<span>Save</span>
+    		</div>
+		</div>
+	</div>
+	
+</div>
+
+
+    <!-- 
+    <table>
+        <tr><td>Title:</td>
+            <td><input id='id_new_menu_title' type='text'></input></td>
+        </tr>
+        <tr><td>Display:</td>
+            <td><input id='input_menu_button_prev_text' type='text'></input></td>
+        </tr>
+        <tr><td>Image:</td>
+            <td><input id='menu_prev_image_file' type='file'></input></td>
+        </tr>
+        
+    </table>
+    
+    <div class='class_new_menu_button_prev'>
+            <div style='display:table-cell; position:relative; left:15px; text-align:center;  vertical-align:middle; height:65px; width:45px;'>
+                 <img id='image_menu_button_prev' src=# width=40 height=40>
+            </div>
+
+            <div id='div_menu_button_prev_text' style='display:table-cell; position:relative; left:20px; text-align:center; vertical-align:middle; height:65px; width:65px; font-family: "Arial Black"; font-size: 14px; color: cyan; overflow:hidden'>
+
+            </div>
+    </div>
+    
+    <input id='id_new_menu_save_button' type='button' value='Save'></input>
+    -->

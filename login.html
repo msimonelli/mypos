@@ -1,0 +1,66 @@
+
+<style>
+.number_image {
+    margin-top: 30px;
+    margin-left: 20px;
+    float: left;
+}   
+
+</style>
+
+<script>
+$(document).ready(function(){
+    $(".number_image").click(function(){
+        var id=$(this).attr('id').replace('login_', '');
+        login_id = $('#login_id');
+            
+        if(id == 'delete')
+            login_id.val('');
+        else if(id == 'enter')
+            $('#dlg_login').dialog('close');
+        else
+            login_id.val(login_id.val() + id);
+    });
+});
+</script>
+
+<div style="position:relative; width:296px; background-color:white">
+
+    <div style='position:relative; width:300px; text-align:center'>
+        <div id='login_1' class="number_image" ><img src="images/Login Buttons/1.png"></div>
+        <div id='login_2' class="number_image" ><img src="images/Login Buttons/2.png"></div>
+        <div id='login_3' class="number_image" ><img src="images/Login Buttons/3.png"></div>
+        <div id='login_4' class="number_image" ><img src="images/Login Buttons/4.png"></div>
+        <div id='login_5' class="number_image" ><img src="images/Login Buttons/5.png"></div>
+        <div id='login_6' class="number_image" ><img src="images/Login Buttons/6.png"></div>
+        <div id='login_7' class="number_image" ><img src="images/Login Buttons/7.png"></div>
+        <div id='login_8' class="number_image" ><img src="images/Login Buttons/8.png"></div>
+        <div id='login_9' class="number_image" ><img src="images/Login Buttons/9.png"></div>
+        <div id='login_delete' class="number_image" ><img src="images/Login Buttons/delete3.png"></div>
+        <div id='login_0' class="number_image" ><img src="images/Login Buttons/0.png"></div>
+        <div id='login_enter' class="number_image" ><img style="width:75px, height:75px" src="images/Login Buttons/enter.png"></div>
+    </div>
+    <br>
+    <div style='float: bottom; text-align:center;'>
+        <input id='login_id' style="margin-top: 15px; margin-bottom:15px; width:175px; height:35px; border-style:double;  border-color:blue; background-color:lightblue; border-radius:15px; border-width:5px; font-weight:bold; text-align:center" type='password'>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

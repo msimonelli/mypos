@@ -1,0 +1,14 @@
+@CHARSET "ISO-8859-1";
+
+table.posShopCart {
+	width: 100%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+td.lineItemSizePrice {
+	text-align: right;
+}
+
+td.lineItemUDPrice {
+	text-align: right;
+}

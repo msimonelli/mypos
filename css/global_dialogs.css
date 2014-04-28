@@ -1,0 +1,43 @@
+@CHARSET "ISO-8859-1";
+
+/* Tony Says dialog box.  Calling tonySays(msg) displays the popup */
+
+#dlg_tonySay {
+	position: relative;
+}
+
+#dlg_tonySay img {
+	position: absolute;
+	bottom: 0px;
+	width: 150px;
+	height: 110px
+}
+
+#dlg_tonySay>div {
+	position: absolute;
+	display: table-cell;
+	vertical-align: middle;
+	width: 300px;
+	height: 200px;
+	left: 100px;
+	bottom: 90px;
+	background-image: url("../images/chat_bubble.png");
+	background-repeat: no-repeat; 
+	background-size: 100% 100%;
+}
+
+#dlg_tonySay>div>div {
+	position: absolute;
+	top: 22px;
+	left: 20px;
+	width: 240px;
+	height: 100px;
+}
+
+#dlg_tonySay>div>div>p {
+	margin: 0px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+/**********************************************************************/

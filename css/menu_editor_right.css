@@ -1,0 +1,38 @@
+@CHARSET "ISO-8859-1";
+
+.image_prev {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.image_select {
+    margin: 3px;
+}
+
+div.toolbar {
+    display: table;
+    width:100%;
+    background-color: lightblue;
+    border-spacing: 1px;
+    text-align: center;
+}
+
+div.toolbar_checkbox {
+    display:table-cell;
+    border: solid;
+    border-width: 1px;
+    border-radius: 3px;
+    background-color: lightgrey;
+    text-align: center;
+    vertical-align: middle;
+    font-family: 'Times New Roman';
+    font-size: 10pt;
+    padding-left: 0px;
+    padding-right: 0px;
+    border-spacing:0px;
+}
+
+div.toolbar_checkbox:hover {
+    background-color: grey;
+}

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>MyPOS 1.01</title>
+
+<!-- Fonts -->
+<link href='http://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
+
+
+<link rel='stylesheet' href='css/pos_layout.css' />
+<link rel='stylesheet' href='css/pos_top.css' />
+
+<!-- Fonts from Google Fonts -->
+<link href='http://fonts.googleapis.com/css?family=Italianno' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
+
+<!--  Load the jquery and jquery-ui libraries, and css theme -->
+<script src="js/jquery-1.10.2.js"></script>
+<script src="js/jquery-ui-1.10.4.custom.js"></script>
+<link rel='stylesheet' href='css/blue-theme/jquery-ui-1.10.4.custom.css'>
+
+<!--  Load FaceScroll library for cool scroll bars -->
+<script type="text/javascript" src="js/facescroll.js"></script>
+<script type="text/javascript" src="js/jquery.simplecolor.js"></script>
+
+
+
+<script src='js/jquery.contextMenu.js' type='text/javascript'></script>
+
+<!--  Load global variables (try not to use these -->
+<script src="js/globals.js"></script>
+<link rel='stylesheet' href='css/global_dialogs.css'>
+<script src='js/global_dialogs.js' type='text/javascript'></script>
+
+<!-- Homegrown jquery plugins -->
+<link rel='stylesheet' href='css/shopping_cart.css' />
+<script src='js/pos.itembutton.js' type='text/javascript'></script>
+<script src='js/pos.lineitem.js' type='text/javascript'></script>
+<script src='js/shopping_cart.js' type='text/javascript'></script>
+<script src='js/pos.toggleswitch.js' type='text/javascript'></script>
+<script src='js/pos.button.js' type='text/javascript'></script>
+
+<!-- Dropdown menus for the text editor.  Can probably move this to the menu editor html -->
+<link type="text/css" rel="stylesheet" href="css/jquery.dropdown.css" />
+<script type="text/javascript" src="js/jquery.dropdown.js"></script>
+
+<script>
+
+$(document).ready(function() {
+
+	// Load the starting pages, in this case we start at the 'Pos Home' grouping and
+	// also fill the global login dialog from login.html
+	group_load('Pos Home');
+	$('#dlg_login').load('login.html');
+
+	// Define login dialog
+	$('#dlg_login').dialog({
+	    autoOpen: false,
+	    draggable: true,
+	    height: 'auto',
+	    modal: true,
+	    title: 'Login',
+	    width: '330px',
+	    dialogClass: 'dlg_login'
+	});
+
+	
+	
+	//tonySays('Hello World!');
+	
+});
+
+</script>
+
+</head>
+<body>
+
+<body>
+
+	<div class='class_top_container class_theme_background'>
+		<div id='ui_topleft' class='class_topleft' style='position:relative'>
+			<img style="width:125px; height:105px; position:absolute; bottom:0px" src='images/Menu Buttons/tony.png'>
+		</div>
+    	<div id='ui_top_nav_bar' class='class_nav_bar'>
+    	</div>
+    </div>
+    
+    <div id='ui_left_nav_bar' class='class_left_nav_bar class_theme_background'>
+    </div>
+    
+    <div class='class_bottom_container class_theme_background'>
+    	<div id='ui_bottomleft' class='class_bottomleft' style='position:relative'>
+    		<span>MyPOS</span>
+    		<br>
+    		<span>1.01</span>
+    	</div>
+    	<div id='ui_bottom_nav_bar' class='class_nav_bar'>
+    	</div>
+    </div>
+    
+    
+    <div class='class_ui_middle_area_inner class_theme_background'>
+        <div id='ui_middle_area' class='class_ui_middle_area'>
+        </div>
+    </div>
+    <div id='ui_right_nav_bar' class='class_right_nav_bar class_theme_background'>
+        <div id='ui_right_ticket_area' class='class_ticket_area'>
+        </div>
+    </div>
+    
+    <!-- 
+    <div style='position:absolute; left:35px; top:890px; color:cyan'>
+        MyPOS 1.01
+    </div>
+    
+    -->
+    
+    <div id='dlg_login'>
+    </div>
+
+	<!-- Tony Says dialog.  I wish this could go in a different file! -->
+	<div id='dlg_tonySay'>
+		<img src='images/Menu Buttons/tony.png'>
+		<div>
+			<div>
+				<p>
+					You must first make a menu selection from the menu buttons on the left side of the screen.
+				</p>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

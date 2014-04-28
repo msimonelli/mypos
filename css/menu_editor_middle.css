@@ -1,0 +1,22 @@
+.menu_spinner {
+    width: 50px;
+    height: 10px;
+    font-size: 10px;
+}
+
+#ui_menu_editor_middle {
+	position: absolute;
+	/* background-color: lightblue; */
+	width: 100%;
+	height: 100%;
+	border-radius: 25px;
+}
+.context-menu-item.icon-delete { background-image: url('../images/icons16/decline.png'); }
+.context-menu-item.icon-color { background-image: url('../images/icons16/color.png'); }
+.context-menu-item.icon-font { background-image: url('../images/icons16/font_color.png'); }
+.context-menu-item.icon-font_size { background-image: url('../images/icons16/font_larger.png'); }
+.context-menu-item.icon-border_size { background-image: url('../images/icons16/border_all.png'); }
+.context-menu-item.icon-border_radius { background-image: url('../images/icons16/border_draw.png'); }
+.context-menu-item.icon-page_font { background-image: url('../images/icons16/page_white_font.png'); }
+.context-menu-item.icon-border_outer { background-image: url('../images/icons16/border_outer.png'); }
+.context-menu-item.icon-paintcan_red { background-image: url('../images/icons16/paintcan_red.png'); }

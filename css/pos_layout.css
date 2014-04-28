@@ -1,0 +1,151 @@
+@CHARSET "ISO-8859-1";
+
+body {
+    background-color: white;
+}
+
+div.class_theme_background {
+    background-image: url('blue-theme/images/ui-bg_glow-ball_50_1175e1_600x600.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+div.class_top_container {
+	border-top-left-radius: 25px;
+	border-top-right-radius: 25px;
+	/* width: 1152px; */
+	width: 1172px;
+	height: 95px;
+}
+
+div.class_bottom_container {
+	border-bottom-left-radius: 25px;
+	border-bottom-right-radius: 25px;
+	width: 1172px;
+	height: 95px;
+}
+
+div.class_topleft {
+	float: left;
+	width: 155px;
+	/* this height should be 95px but it is custom designed in 
+	   this case to get Tony on top of the menu buttons. Under normal
+	   circumstances we can use this for the bottomleft class as well 
+	*/
+	height: 120px;
+}
+
+div.class_bottomleft {
+	float: left;
+	width: 155px;
+	height: 95px;
+	font-family: Italianno;
+	font-size: 24px;
+	font-weight: bold;
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+}
+
+div.class_nav_bar {
+    float: left;
+    height: 95px;
+    width: 1000px;
+}
+
+div.class_left_nav_bar {
+    /* width: 135px; */
+    width: 155px;
+    height: 720px;
+}
+
+div.class_right_nav_bar {
+    position: absolute;
+    /*
+    background-image: url('blue-theme/images/ui-bg_glow-ball_50_1175e1_600x600.png');
+    background-size: 100% 100%;
+    */
+    top: 103px;
+    left:890px;
+    background-color: blue;
+    width: 290px;
+    height: 720px;
+}
+
+div.class_ui_middle_area_inner {
+    position: absolute;
+    /* left: 143px; */
+    left: 163px;
+    top: 103px;
+    width: 730px;
+    height: 720px;
+    /*
+    background-image: url('blue-theme/images/ui-bg_glow-ball_50_1175e1_600x600.png');
+    background-size: 100% 100%;
+    */
+    background-color: blue;
+    z-index: 1;
+}
+
+div.class_ui_middle_area {
+    position: absolute;
+    left: 0px;
+    top:0px;
+    width: 720px;
+    height: 715px;
+    background-color: #fff6da;
+    border-radius: 25px;
+    border: 3px solid black;
+    z-index: 1;
+}
+
+div.class_ticket_area {
+    position: relative;
+    margin-left: 2px;
+    width: 280px;
+    height: 550px;
+    border-radius: 25px;
+    /* background-color: #fff2cc; */
+    background-color: #F5FFFA;
+    border: 3px outset;
+}
+
+/* Not sure what this is */
+div.class_scroll_banner {
+    position: absolute;
+    top: 83px;
+    left: 143px;
+    background-color: white;
+    width: 1017px;
+    height: 20px;
+    font-family: "Arial";
+    font-size: 10px;
+    font-weight: bold;
+    color: cyan;
+}
+
+/* Not sure what this is */
+div.class_tiny_info_area {
+    position: absolute;
+    top:105px;
+    left:8px;
+    width:135px;
+    height:20px;
+    font-family: "Arial";
+    font-size:10px;
+    font-weight:bold;
+    background-color: white;
+    text-align: right;
+    color: pink;
+}
+
+.dlg_login .ui-widget-header {
+    background-color: white;
+    color: white;
+    background-size: 100% 100%;
+    height:20px;
+}
+
+.dlg_login .ui-corner-all {
+    background-color: red;
+}

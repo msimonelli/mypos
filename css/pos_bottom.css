@@ -1,0 +1,30 @@
+@CHARSET "ISO-8859-1";
+div.pos_bottom {
+    margin-left: 140px;
+}
+
+div.pos_bottom img {
+    /* background-color: blue; */
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    margin: 10px;
+    margin-bottom: 0px;
+}
+
+div.pos_bottom div {
+    float: left;
+    margin-right:35px;
+}
+
+div.pos_bottom p {
+    /* background-color: blue; */
+    width: 65px;
+    font-family: 'Arial Black';
+    font-weight: bold;
+    font-size: 14px;
+    color: white;
+    text-align: center;
+    cursor: default;
+    margin: 0px;
+}

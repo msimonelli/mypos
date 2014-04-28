@@ -1,0 +1,89 @@
+@CHARSET "ISO-8859-1";
+
+div.menu_button {
+    //position:relative;
+    /* background-image: url('../images/Menus/menu_button_red.png'); */
+    /* background-size: auto 70px; */
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 155px;
+    height: 70px;
+}    
+
+div.menu_button-red {
+	background-image: url('../images/Menus/menu_button_red.png');
+}
+
+div.menu_button-blue {
+	background-image: url('../images/Menus/menu_button_blue.png');
+}
+
+div.menu_button-green {
+	background-image: url('../images/Menus/menu_button_green.png');
+}
+
+div.menu_button-grey, div.menu_button-inactive {
+	background-image: url('../images/Menus/menu_button_grey.png');
+}
+
+div.menu_button-lightblue {
+	background-image: url('../images/Menus/menu_button_lightblue.png');
+}
+
+div.menu_button-purple {
+	background-image: url('../images/Menus/menu_button_purple.png');
+}
+
+div.menu_button-turquois {
+	background-image: url('../images/Menus/menu_button_turquois.png');
+}
+
+div.menu_button-yellow, div.menu_button_selected {
+	background-image: url('../images/Menus/menu_button_yellow.png');
+}
+
+
+div.menu_button>div {
+    position: relative;
+    display: inline-block;;
+    width: 50px;
+    height: 65px;
+    overflow: hidden;
+}
+
+div.menu_button div:last-child {
+    width:90px;
+}
+
+div.menu_button>div>img {
+    width: 40px;
+    height: 40px;
+    margin: auto;
+    position: absolute;
+    top: 0; 
+    left: 10px; 
+    bottom: 0; 
+    right: 0;
+}
+
+div.menu_button>div>span {
+    display: table-cell;
+    vertical-align: middle;
+    max-width: 90px;
+    min-width: 90px;
+    height: inherit;
+    text-align: center;
+    overflow: hidden;
+    font-family: Righteous;
+    font-size: 20px;
+    color: white;
+}
+
+div.menu_button:hover {
+	background-image: url('../images/Option Buttons/menu_button_yellow.png');
+}
+
+div.menu_button:hover>div>span, div.menu_button_selected>div>span {
+    font-style: italic;
+    color: black;
+}
