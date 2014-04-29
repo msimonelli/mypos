@@ -28,14 +28,27 @@ $('.menu_button').click(function() {
 	alert(e);
 });
 */
+
 /******************************************************************************/
 
 $(document).ready(function() {
-
+	
 	$('#dlg_new_menu').dialog({ 
 		autoOpen: false,
 		modal: true,
 		width: 650
+	});
+	
+	$('#dlg_new_menu_font_color').simpleColor({
+		boxWidth: '12px',
+		boxHeight: '12px',
+		displayCSS: {
+			'margin-left': '4px',
+			'margin-top' : '3px'
+	    },
+	    onSelect: function(color, e) {
+	        $('#prev_menu_button span').css('color', '#'+color);
+	    }
 	});
 
 	$('#new_menu_button').click(function() {
@@ -57,28 +70,33 @@ $(document).ready(function() {
 /*******************************************************************************
     Execute PHP script to save to database
 *******************************************************************************/
-	$('#save_menu_button').click(function() {
-		//alert('test');
+	
+	//$('#save_menu_button').click(function() {
+	$('#save_menu_button').off('click').on('click', function() {
+		$('#dlg_new_menu').dialog('close');
 		var title = $('#dlg_new_menu>div>div>div>label:first-child>input').val();
 		var display = $('#prev_menu_button span').html();
 		var image = $('#prev_menu_button img').attr('src');
 		var bg = $('#prev_menu_button').attr('class').split(' ')[1].replace('menu_button-', '');
 		var active = $('#dlg_new_menu input[type=checkbox]').is(':checked');
+		var color = $('#prev_menu_button span').css('color');
+		
 		if(active) active = 1;
 		else active = 0;
 		
-		var data = { 
+		var data = {
 			title: title,
 			display: display,
 			background: bg,
+			color: color,
 			active: active,
 			image: image 
         };
-		
+
 		var str = JSON.stringify(data);
 
 		$.post('cgi/db_insert_menu_button.php', data, function(result) {
-			// alert(result);
+			$('#dlg_new_menu').dialog('close');
 		});
 
 	});
@@ -93,10 +111,15 @@ $(document).ready(function() {
 			buttons: {
 				Yes: function () {
 					$.post('cgi/db_delete_menu.php', { id: id });
-					//alert(id);
+					// no need to reload, just remove the elements from the DOM
+					//$('#ui_left_nav_bar').load('menu_editor_left.html');
+					$('.menu_button_selected').remove();
+					$('.item_button').remove();
+					$('#dlg_tonySay').dialog('close');
+					
 				},
 				No: function() {
-					alert('cancelled');
+					$('#dlg_tonySay').dialog('close');
 				}
 			}
 		});

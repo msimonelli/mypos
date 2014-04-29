@@ -9,6 +9,7 @@ var pos_groups = {
         'bottom' : 'pos_bottom.html',
         'left' : 'pos_left.html',
         'right' : 'pos_right.html'
+        //'bottomLeft' : 'menu_editor_bottomLeft.html'
     },
     'Admin Home' : {
         'top' : 'admin_top.html',
@@ -22,7 +23,8 @@ var pos_groups = {
         'bottom' : 'menu_editor_bottom.html',
         'left' : 'menu_editor_left.html',
         'right' : 'menu_editor_right.html',
-        'middle' : 'menu_editor_middle.html'
+        'middle' : 'menu_editor_middle.html',
+        'bottomLeft' : 'menu_editor_bottomLeft.html'
     }
 };
 
@@ -36,6 +38,9 @@ function group_load(group)
     $('#ui_bottom_nav_bar').load(pos_groups[group].bottom);
     $('#ui_right_ticket_area').load(pos_groups[group].right);
     $('#ui_middle_area').load(pos_groups[group].middle);
+    //alert(pos_groups[group].bottomLeft);
+    $('#ui_bottomleft').load(pos_groups[group].bottomLeft);
+    //$('#ui_bottomLeft').html('test');
 }
 
 function tonySays(msg)

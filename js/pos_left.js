@@ -110,6 +110,7 @@ $(document).ready(function() {
 			var display = arr[x].display;
 			var image = arr[x].image;
 			var menu_id = arr[x].menu_id;
+			var color = arr[x].color;
 			var bg = 'menu_button-' + arr[x].background;
         
 			var str = '';
@@ -119,22 +120,13 @@ $(document).ready(function() {
 		    str += '    	<img src=' + image + ' />';
 		    str += '    </div>';
 		    str += '    <div>';
-		    str += '    	<span>' + display + '</span>';
+		    str += '    	<span style="color: ' + color + '">' + display + '</span>';
 		    str += '    </div>';
 		    str += '</div>';
 			
-			/*
-			str += '<div class="class_pos_left_nav_menu_button" id="menu_button' + menu_id + '">';
-			str += '  <div style="display:table-cell; position:relative; left:15px; text-align:center;  vertical-align:middle; height:65px; width:45px;">';
-			str += '    <img src=' + image + ' width=40 height=40>';
-			str += '  </div>'
-			str += '  <div class="class_pos_left_nav_menu_button_text">';
-			str += display + '</div>';
-			str += '</div>';
-        	*/
 			$('#pos_left_nav_bar_container').append(str);
-			$('#pos_left_nav_bar_container').alternateScroll('remove');
-			$('#pos_left_nav_bar_container').alternateScroll();
 		}
+		$('#pos_left_nav_bar_container').alternateScroll('remove');
+		$('#pos_left_nav_bar_container').alternateScroll();
 	});
 }); // document.ready()

@@ -1,5 +1,10 @@
 @CHARSET "ISO-8859-1";
 
+#dlg_new_menu {
+	font-family: 'Open Sans Condensed';
+	font-weight: bold;
+}
+
 /* box to display all button colors */
 #dlg_new_menu>div:nth-child(2)>div:first-child {
 	float: left;
@@ -9,8 +14,6 @@
 	border: 1px solid black;
 	overflow: scroll;
 }
-
-
 
 #dlg_new_menu>div>div>div {
 	margin-bottom: 5px;
@@ -22,7 +25,7 @@
 }
 
 #dlg_new_menu span {
-	color: blue;
+	/* color: blue; */
 }
 
 /* Preview Area */
