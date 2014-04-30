@@ -98,7 +98,7 @@ $(document).ready(function() {
 	/*******************************************************************************
      	Build menu buttons into the left nav area from the database
 	 *******************************************************************************/
-	var data = { query: 'SELECT * FROM menus WHERE active = true' };
+	var data = { query: 'SELECT * FROM menus WHERE active = true ORDER BY menus.order' };
 
 	$.post('cgi/db_simple_select.php', data, function(result) {
 

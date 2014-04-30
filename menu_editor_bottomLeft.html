@@ -1,15 +1,7 @@
 <style>
 .menu_move {
 	position: relative;
-	background-color: yellow;
-	//width: 100%;
-	//height: 100%;
 	margin-left: 15px;
-	//top: 0;
-	//bottom: 0;
-	//left: 0;
-	//right: 0;
-	//margin: auto;
 }
 
 .menu_move div {
@@ -22,6 +14,31 @@
 }
 
 </style>
+
+<script>
+$(document).ready(function() {
+	
+	$('.menu_move img').click(function() {
+		this_menu = $('.menu_button_selected').attr('id');
+		if($(this).attr('src') == 'images/up_arrow.png') {
+			swap_menu = $('.menu_button_selected').prev('.menu_button').attr('id');
+			$('.menu_button_selected').insertBefore( $('.menu_button_selected').prev('.menu_button'));
+			//alert(swap_menu);
+		}
+		else {
+			swap_menu = $('.menu_button_selected').next('.menu_button').attr('id');
+			$('.menu_button_selected').insertAfter( $('.menu_button_selected').next('.menu_button'));
+		}
+		$.post('cgi/db_swap_menus.php', {
+			menu1: this_menu.replace('menu_button', ''),
+			menu2: swap_menu.replace('menu_button', ''),
+			pos1: $('#'+this_menu).position().top,
+			pos2: $('#'+swap_menu).position().top
+		});
+	});
+}); //document.ready
+
+</script>
 
 <div class='menu_move' style='width: 100%'>
 	<div>

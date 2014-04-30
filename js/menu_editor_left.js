@@ -82,7 +82,7 @@ $('#pos_left_nav_bar_container').delegate('.menu_button', 'click', function() {
 /*******************************************************************************
     Build menu buttons into the left nav area from the database
 *******************************************************************************/
-var data = { query: 'SELECT * FROM menus' };
+var data = { query: 'SELECT * FROM menus ORDER BY menus.order' };
 
 $.post('cgi/db_simple_select.php', data, function(result) {
 
