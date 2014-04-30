@@ -8,8 +8,8 @@ var pos_groups = {
         'top' : 'pos_top.html',
         'bottom' : 'pos_bottom.html',
         'left' : 'pos_left.html',
-        'right' : 'pos_right.html'
-        //'bottomLeft' : 'menu_editor_bottomLeft.html'
+        'right' : 'pos_right.html',
+        'bottomLeft' : 'pos_bottomLeft.html'
     },
     'Admin Home' : {
         'top' : 'admin_top.html',
