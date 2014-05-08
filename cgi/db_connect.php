@@ -6,3 +6,4 @@ DB::$user = 'root';
 DB::$password = 'Pr1vat3';
 DB::$dbName = 'mypos';
 ?>
+
