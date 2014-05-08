@@ -4,7 +4,7 @@
 
 // I don't like global variables here but I don't see another way
 //var current_menu_id = null;
-var next_button_id = 0;
+//var next_button_id = 0;
 
 $(document).ready(function() { 
 	// On menu item clicks, attempts to make a ticket in the ticket area.  In development stage
@@ -50,7 +50,7 @@ $(document).ready(function() {
 			{
 				var id1 = 'item_button_container_' + arr[x].item_button_id;
 				var id2 = 'id_item_button_' + arr[x].item_button_id;
-				next_button_id = arr[x].item_button_id+1;
+				//next_button_id = arr[x].item_button_id+1;
             
 				var css = {
 					position: 'absolute',
