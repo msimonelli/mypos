@@ -3,10 +3,10 @@
  */
 
 // I don't like global variables here but I don't see another way
-var current_menu_id = null;
+//var current_menu_id = null;
 var next_button_id = 0;
 
-$(document).ready(function() {
+$(document).ready(function() { 
 	// On menu item clicks, attempts to make a ticket in the ticket area.  In development stage
 	// and is just test stuff right now.  I don't even think it belongs in this file... ??
 	$('#ui_middle_area').delegate('.item_button', 'click', function() {
