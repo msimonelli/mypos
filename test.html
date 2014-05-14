@@ -1,0 +1,58 @@
+<script src="js/jquery-1.10.2.js"></script>
+<script src="js/jquery-ui-1.10.4.custom.js"></script>
+<link rel='stylesheet' href='css/blue-theme/jquery-ui-1.10.4.custom.css'>
+
+<style>
+.test {
+	width: 100px;
+	height: 100px;
+	display: table;
+}
+
+.test .inner {
+	background-color: red;
+	width: 100%;
+	height: 100%;
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.cell {
+	background-color: red;
+	width: 100px;
+	height: 100px;
+	vertical-align: middle;
+}
+
+</style>
+
+
+<script>
+
+$(document).ready(function() {
+	
+	/*
+	str =  '<div class="test">';
+	str += '  <div class="inner">';
+	str += '  </div>';
+	str += '</div>';
+	
+	$('body').append(str);
+	
+	//$('.inner').css('width', '100%');
+	$('.test').draggable();
+	$('.test').resizable();
+	*/
+	$('.cell').resizable();
+	$('.cell').css('display', 'table-cell');
+	//$('.cell').css('display', 'block');
+});
+
+</script>
+
+<body>
+	<div class='cell'>
+	test
+	</div>
+</body>

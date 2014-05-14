@@ -31,18 +31,24 @@
                         'textDecoration': this.children('div').css('text-decoration'),
                         'textAlign': this.children('div').css('text-align'),
                         'verticalAlign': this.children('div').css('vertical-align'),
-                        'color': this.children('div').css('color'),
-                        'borderStyle': this.children('div').css('borderTopStyle'),
-                        'borderWidth': Math.ceil(this.children('div').css('borderTopWidth').replace('px', '')),
-                        'borderRadius': Math.ceil(this.children('div').css('borderTopRightRadius').replace('px', '')),
-                        'borderColor': this.children('div').css('borderTopColor'),
-                        'backgroundColor': this.children('div').css('background-color')
+                        'color': this.children('div').css('color')
+                        //'borderStyle': this.children('div').css('borderTopStyle'),
+                        //'borderWidth': Math.ceil(this.children('div').css('borderTopWidth').replace('px', '')),
+                        //'borderRadius': Math.ceil(this.children('div').css('borderTopRightRadius').replace('px', '')),
+                        //'borderColor': this.children('div').css('borderTopColor'),
+                        //'backgroundColor': this.children('div').css('background-color')
                     },
                     CSS: {
                         'top' : Math.ceil(this.css('top').replace('px', '')),
                         'left' : Math.ceil(this.css('left').replace('px', '')),
                         'width' : Math.ceil(this.css('width').replace('px', '')),
                         'height' : Math.ceil(this.css('height').replace('px', '')),
+                        'borderStyle': this.css('borderTopStyle'),
+                        'borderWidth': Math.ceil(this.css('borderTopWidth').replace('px', '')),
+                        'borderRadius': Math.ceil(this.css('borderTopRightRadius').replace('px', '')),
+                        'borderColor': this.css('borderTopColor'),
+                        'backgroundColor': this.css('background-color'),
+                        'backgroundImage' : this.css('background-image'),
                         'zIndex' : 500
                     },
                     other: {
