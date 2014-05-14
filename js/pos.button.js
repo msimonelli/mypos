@@ -7,8 +7,8 @@
     $.fn.posButton = function( options )
     {
         options = $.extend({
-            image: 'images/Item Buttons/round_button_green2.png',
-            hover_image: 'images/Item Buttons/round_button_yellow2.png',
+            image: 'images/item_buttons/round_button_green2.png',
+            hover_image: 'images/item_buttons/round_button_yellow2.png',
             width: '60px',
             height: '30px',
             text_align: 'center',

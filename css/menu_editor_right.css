@@ -8,6 +8,8 @@
 
 .image_select {
     margin: 3px;
+    width: 45px;
+    height: 45px;
 }
 
 div.toolbar {
@@ -35,4 +37,9 @@ div.toolbar_checkbox {
 
 div.toolbar_checkbox:hover {
     background-color: grey;
+}
+
+#div_prev {
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }

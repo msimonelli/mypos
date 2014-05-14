@@ -35,6 +35,7 @@ $(document).ready(function() {
 		current_button_inner.css('border-radius', ui.value+'px');
 	});
 
+	/*
 	$('#ui_menu_editor_middle').delegate('.item_button', 'mousedown', function() {
 		if(!$(this).hasClass('new_button')) {
 			$(this).addClass('changed_button');
@@ -49,7 +50,22 @@ $(document).ready(function() {
 		$('#menu_border_color').setColor( current_button_inner.css('borderTopColor'));
 		$('#background_color_picker').setColor( current_button_inner.css('background-color'));
 	});
-
+	*/
+	
+	/*******************************************************************************
+	 * Delegate clicks down to item buttons
+	 */
+	
+	$('#ui_menu_editor_middle').delegate('.item_button', 'click', function() {
+		button = $(this);
+		$('.button_selected').removeClass('button_selected');
+		button.addClass('button_selected');
+		alert('removed and added class')
+	});
+	
+	
+	
+	
 	$('#menu_border_color').simpleColor( {
 		onSelect: function(color, e) {
 			current_button_inner.css('border-color', '#'+color);

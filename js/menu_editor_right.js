@@ -2,11 +2,10 @@
  * 
  */
 
-var new_button_count = 0;
-var current_image_id = 0;
+//var new_button_count = 0;
+//var current_image_id = 0;
 
 $(document).ready(function() {
-
 
 /*******************************************************************************
 This handles spin events for all spinners with the 'spinner' class.  Adds
@@ -24,6 +23,7 @@ $('.spinner').on('spin', function(event, ui)
 /*******************************************************************************
 Get button Images, append to selection div
 *******************************************************************************/
+/*
 var data = { query: 'SELECT * FROM button_images_tbl' };
 $.post('cgi/db_simple_select.php', data, function(result) {
     var arr = eval(result);
@@ -35,71 +35,80 @@ $.post('cgi/db_simple_select.php', data, function(result) {
         div.append(str);
     }
 });
+*/
+
+$.post('cgi/db_get_button_images.php', function(result) {
+	$('#div_image_select').append(result);
+});
+
+
+/*******************************************************************************
+Experemental
+/******************************************************************************/
+
+$('.item_button').click(function() {
+	//alert('test');
+	$('.button_selected').removeClass('button_selected');
+	$(this).addClass('button_selected');
+});
+
 /*******************************************************************************
 Process click on button image and set to background of preview
 *******************************************************************************/
 $('#div_image_select').on('click', '.image_select', function() {
     var image = $(this).attr('src');
-    $('#div_prev').css('background-image', 'url("' + image + '")');
-    $('#div_prev').css('background-size', '100% 100%');
-    $('#div_prev').css('background-repeat', 'no-repeat');
     
-    current_image_id = this.id.replace('btn_img_id_', '');
-});
+    $('.button_selected').css('background-image', 'url("' + image + '")');
+    $('.button_selected div').css('background-repeat', 'no-repeat');
+    //$('#div_prev').css('background-image', 'url("' + image + '")');
 
+    // Not sure if this stuff is really needed anymore
+    $('.selected_image').removeClass('selected_image');
+    $(this).addClass('selected_image');
+    
+    //alert($('.selected_image').attr('id'));
+    //current_image_id = this.id.replace('btn_img_id_', '');
+});
 /*******************************************************************************
 Process Insert - clone object, set some stuff up, and append to middle area
 *******************************************************************************/
-$('#insert_button').click(function() {
-    if(current_menu_id == null)
-    {
-        //$('#dlg_no_menu').dialog('open');
-    	tonySays('You must first select a menu from the left or create a new one before you can insert a button.');
-        return;
-    }
 
-    var prev = $('#div_button_container');
-    var button = [];
+$('#insert_button').click(function() {
+	try {
+		current_menu_id = parseInt($('.menu_button_selected').attr('id').replace('menu_button', ''));
+	}
+	catch(err) {
+		tonySays('You must first select a menu from the left or create a new one before you can insert a button.');
+		return;
+	}
+	
+    var prev = $('.prev_button');
     
     prev.resizable('destroy')
-    var button = prev.clone();
-
-    //button.attr('id', 'id_new_button'+new_button_count);
-    button.attr('id', 'id_button_container_'+next_button_id);
-    button.children('div :first-child').attr('id', 'id_item_button_'+next_button_id);
+    button = prev.clone();
     
-    $('#id_item_button_'+next_button_id).addClass('item_btn_inner');   
+    //button.attr('id', 'clear_me');
+    //button.first().attr('id', 'clear_me');
+    button.removeClass('prev_button');
+    
+    prev.resizable();
+    
     button.itemButton();
-    button.itemButton('setImage', current_image_id);
     button.itemButton('setMenu', current_menu_id);
-    button.itemButton('setItem', 0);
     
     button.addClass('new_button');
     button.addClass('item_button');
-    button.addClass('edit');
     
-    button.children('div :first-child').css('background-size', '100% 100%');
     button.appendTo($('#ui_menu_editor_middle'));
     button.css('top', '0px');
     button.css('left', '0px');
     button.css('position', 'absolute');
-
+    //button.first().css('backgroundRepeat', 'noRepeat');
+    
     button.draggable( {containment: 'parent' } );
-    button.resizable();
-    button.children('div :first-child').editable( {
-        type: 'text',
-        pk: 1,
-        toggle: 'dblclick',
-        title: 'Enter Text'
-    });
-    
-    prev.resizable();
-    
+    button.resizable( {containment: 'parent' } );
+        
     button.css('z-index', '500');
-
-    new_button_count++; // deprecated. May not be used anymore
-    next_button_id++;
-    
 });
 
 /*******************************************************************************
@@ -116,19 +125,19 @@ $('#save_button').click(function() {
     json = json.replace(/'/g, '');
     
     if(buttons.length > 0) {
-        $.ajax( {   type: 'POST',
-                url: 'db_insert_item_buttons.php',
-                data: {'buttons' : json }, //JSON.stringify(buttons).replace(/px/g,'') },
-                dataType: 'json',
-                async: false,
-                success: function(res) {
-                    alert(res);
-                }
+        $.ajax({   
+        	type: 'POST',
+            url: 'cgi/db_insert_item_buttons.php',
+            data: {'buttons' : json }, //JSON.stringify(buttons).replace(/px/g,'') },
+            dataType: 'json',
+            async: false,
+            success: function(res) {
+            	alert(res);
             }
-        );
+        });
     }
     
-    // Changed buttons
+   // Changed buttons
     buttons = [];
     $('.changed_button').each(function(i, obj) {
         //alert('change');
@@ -139,16 +148,16 @@ $('#save_button').click(function() {
     json = JSON.stringify(buttons).replace(/px/g, '');
     json = json.replace(/'/g, '');
     if(buttons.length > 0) {
-        $.ajax( {   type: 'POST',
-                url: 'db_update_item_buttons.php',
-                data: {'buttons' : json }, //JSON.stringify(buttons).replace(/px/g,'') },
-                dataType: 'json',
-                async: false,
-                success: function(res) {
-                    alert(res);
-                }
+        $.ajax({   
+        	type: 'POST',
+            url: 'cgi/db_update_item_buttons.php',
+            data: {'buttons' : json }, //JSON.stringify(buttons).replace(/px/g,'') },
+            dataType: 'json',
+            async: false,
+            success: function(res) {
+            	alert(res);
             }
-        );
+        });
     }
     
     // Deleted buttons
@@ -160,16 +169,16 @@ $('#save_button').click(function() {
     json = JSON.stringify(buttons);
     if(buttons.length > 0) {
         //alert('posting');
-        $.ajax( {   type: 'POST',
-                url: 'db_delete_item_buttons.php',
-                data: {'buttons' : json }, //JSON.stringify(buttons).replace(/px/g,'') },
-                dataType: 'json',
-                async: false,
-                success: function(res) {
-                    alert(res);
-                }
+        $.ajax({   
+        	type: 'POST',
+            url: 'db_delete_item_buttons.php',
+            data: {'buttons' : json }, //JSON.stringify(buttons).replace(/px/g,'') },
+            dataType: 'json',
+            async: false,
+            success: function(res) {
+            	alert(res);
             }
-        );
+        });
     }
 });
 
@@ -177,33 +186,33 @@ $('#save_button').click(function() {
 
 $('input[name="halign_group"]:radio').change(function() {
     var radio = $('input[name="halign_group"]:checked');
-    $('#div_prev').css('text-align', radio.val());
+    $('.button_selected .innerItemButton').css('text-align', radio.val());
 });
 
 $('input[name="valign_group"]:radio').change(function() {
     var radio = $('input[name="valign_group"]:checked');
-    $('#div_prev').css('vertical-align', radio.val());
+    $('.button_selected .innerItemButton').css('vertical-align', radio.val());
 });
 
 $('input[name="border_group"]:radio').change(function() {
     var radio = $('input[name="border_group"]:checked');
-    $('#div_prev').css('border-style', radio.val());
+    $('.button_selected').css('border-style', radio.val());
 });
 
 $('.font').click(function() {
     var font=$(this).html();
-    $('#div_prev').css('font-family', font);
+    $('.button_selected .innerItemButton').css('font-family', font);
 });
 
 /** Initialize all toolbar checkboxes **/
-$('#italic').toggleSwitch({target: '#div_prev', css: 'font-style', css_on_val: 'italic', css_off_val: 'normal'});
-$('#bold').toggleSwitch({target: '#div_prev', css: 'font-weight', css_on_val: 'bold', css_off_val: 'normal'});
-$('#underline').toggleSwitch({target: '#div_prev', css: 'text-decoration', css_on_val: 'underline', css_off_val: 'none'});
+$('#italic').toggleSwitch({target: '.button_selected .innerItemButton', css: 'font-style', css_on_val: 'italic', css_off_val: 'normal'});
+$('#bold').toggleSwitch({target: '.button_selected .innerItemButton', css: 'font-weight', css_on_val: 'bold', css_off_val: 'normal'});
+$('#underline').toggleSwitch({target: '.button_selected .innerItemButton', css: 'text-decoration', css_on_val: 'underline', css_off_val: 'none'});
 
 /** Initialize all toolbar spinners **/
-$('#font_size').spinner({target: '#div_prev', css: 'font-size', unit: 'pt'} );
-$('#border_size').spinner({target: '#div_prev', css: 'borderWidth', unit: 'px'});
-$('#border_radius').spinner({target: '#div_prev', css: 'border-radius', unit: 'px'});
+$('#font_size').spinner({target: '.button_selected .innerItemButton', css: 'font-size', unit: 'pt'} );
+$('#border_size').spinner({target: '.button_selected', css: 'borderWidth', unit: 'px'});
+$('#border_radius').spinner({target: '.button_selected', css: 'border-radius', unit: 'px'});
 
 /*******************************************************************************
 Initialize all toolbar color pickers
@@ -224,25 +233,27 @@ var color = {
     }
 };
 
-color.target='#div_prev';
+color.target='.button_selected .innerItemButton';
+//color.target='.button_selected div:first-child';
+
 color.css='color';
 $('#font_color').simpleColor(color);
 
-color.target='#div_prev';
+color.target='.button_selected';
 color.css='border-color';
 $('#border_color input').simpleColor(color);
 
-color.target='#div_prev';
+//color.target='#div_prev';
 color.css='background-color';
 $('#bg_color input').simpleColor(color);
 /******************************************************************************/
 
 
 $('#new_button_text').keyup(function() {
-    $('#div_prev').html($(this).val());
+    $('.button_selected .innerItemButton').html($(this).val());
 });
 
-$('#border_width').val( $('#div_prev').css('width'));
+$('#border_width').val( $('.button_selected .innerItemButton').css('width'));
 
 
 $('#save_button').posButton( { text: 'Save' } );
@@ -254,15 +265,15 @@ $('#dlg_no_menu').dialog( { autoOpen: false,
                             title: 'No Menu Selected!'
                         } );
                         
-$('#div_button_container').resizable();
+$('.prev_button').resizable();
 
 $('#btn_noImage').click(function() {
-    $('#div_prev').css('background-image', '');
+    $('.button_selected').css('background-image', '');
     current_image_id = 0;
 });
 
 $('#bgTransparent').click(function() {
-    $('#div_prev').css('background-color', 'transparent');
+    $('.button_selected').css('background-color', 'transparent');
 });
 
 }); // End Document Ready()
