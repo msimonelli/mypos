@@ -2,9 +2,6 @@
  * 
  */
 
-//var current_menu_id = null;
-//var next_button_id = 0;
-
 $(document).ready(function() {
 
 
@@ -37,8 +34,9 @@ $('#pos_left_nav_bar_container').delegate('.menu_button', 'click', function() {
 		for(var x=0; x < arr.length; x++)
 		{
 			str  = '<div class="item_button">';
-			str += '  <div class="innerItemButton">';
+			str += '  <span class="innerItemButton">';
 			str +=      arr[x].other.text;
+			str += '  </span>';
 			str += '</div>';
 		
 			//$('#ui_middle_area').append(str);
@@ -50,10 +48,14 @@ $('#pos_left_nav_bar_container').delegate('.menu_button', 'click', function() {
 			
 			button.css(arr[x].outerCss);
 			inner.css(arr[x].innerCss);
+		
+			button.itemButton();
+			button.itemButton('setAll', arr[x].other);
 			
 			button.resizable( { containment: 'parent' } );
 			button.draggable( { containment: 'parent' } );
-			button.itemButton();
+			//button.itemButton();
+			//button.itemButton('setAll', arr[x].other);
 		}
 		
 	});

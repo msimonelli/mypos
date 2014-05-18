@@ -67,8 +67,85 @@ $(document).ready(function() {
 		$('#prev_menu_button').addClass(newC);
 	});
 
+	
+	/*******************************************************************************
+	Save - save ITEM BUTTONS to database
+	*******************************************************************************/
+	$('#save_menu').click(function() {
+	    var buttons = [];
+	    output = '';
+	    
+	    // New Buttons
+	    $('.new_button').each(function(i, obj) {
+	        buttons[buttons.length] =  $(obj).itemButton('getJSON');
+	        $(obj).removeClass('new_button');
+	    });
+	    
+	    var json = JSON.stringify(buttons).replace(/px/g, '');
+	    json = json.replace(/'/g, '');
+	    
+	    if(buttons.length > 0) {
+	    	$.ajax({
+	    		type: 'POST',
+	    		url: 'cgi/db_insert_item_buttons.php',
+	    		data: { 'buttons' : json },
+	    		datatype: 'json',
+	    		async: false,
+	    		success: function(data, textStatus, jqXHR) {
+	    			output = data;
+	    		}
+	    	});
+	    }
+	    
+	   // Changed buttons
+	    buttons = [];
+	    $('.changed_button').each(function(i, obj) {
+	        buttons[buttons.length] = $(obj).itemButton('getJSON');
+	        $(obj).removeClass('changed_button');
+	    });
+	    json = JSON.stringify(buttons).replace(/px/g, '');
+	    json = json.replace(/'/g, '');
+	    
+	    if(buttons.length > 0) {
+	    	$.ajax({
+	    		type: 'POST',
+	    		url: 'cgi/db_update_item_buttons.php',
+	    		data: { 'buttons' : json },
+	    		datatype: 'json',
+	    		async: false,
+	    		success: function(data, textStatus, jqXHR) {
+	    			output += data;
+	    		}
+	    	});
+	    }
+	    // Deleted buttons
+	    // BUG: CHANGE THIS LIKE THE NEW AND CHANGED BUTTONS
+	    buttons = [];
+	    $('.button_deleted').each(function(i, obj) {
+	        //alert('adding to array');
+	        //buttons[buttons.length] = $(obj).attr('id').replace('item_button_container_', '');
+	    	buttons[buttons.length] = $(obj).itemButton('getId');
+	    });
+	    json = JSON.stringify(buttons);
+	    if(buttons.length > 0) {
+	        $.ajax({   
+	        	type: 'POST',
+	            url: 'cgi/db_delete_item_buttons.php',
+	            data: {'buttons' : json }, //JSON.stringify(buttons).replace(/px/g,'') },
+	            dataType: 'json',
+	            async: false,
+	            success: function(data, textStatus, jqXHR) {
+	            	// For some reason this never gets called??
+	    			output += data;
+	            }
+	        });
+	    }
+	    tonySays('Menu Saved<br><br>' + output);
+	});
+	
+	
 /*******************************************************************************
-    Execute PHP script to save to database
+    Execute PHP script to save MENU Button to database
 *******************************************************************************/
 	
 	//$('#save_menu_button').click(function() {

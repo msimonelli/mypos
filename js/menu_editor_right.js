@@ -36,7 +36,7 @@ $.post('cgi/db_simple_select.php', data, function(result) {
     }
 });
 */
-
+// Neatly did it all in the PHP script.
 $.post('cgi/db_get_button_images.php', function(result) {
 	$('#div_image_select').append(result);
 });
@@ -59,15 +59,12 @@ $('#div_image_select').on('click', '.image_select', function() {
     var image = $(this).attr('src');
     
     $('.button_selected').css('background-image', 'url("' + image + '")');
-    $('.button_selected div').css('background-repeat', 'no-repeat');
-    //$('#div_prev').css('background-image', 'url("' + image + '")');
+    
+    // Do we need this still?
+    $('.button_selected').css('background-repeat', 'no-repeat');
 
-    // Not sure if this stuff is really needed anymore
     $('.selected_image').removeClass('selected_image');
     $(this).addClass('selected_image');
-    
-    //alert($('.selected_image').attr('id'));
-    //current_image_id = this.id.replace('btn_img_id_', '');
 });
 /*******************************************************************************
 Process Insert - clone object, set some stuff up, and append to middle area
@@ -86,11 +83,7 @@ $('#insert_button').click(function() {
     
     prev.resizable('destroy')
     button = prev.clone();
-    
-    //button.attr('id', 'clear_me');
-    //button.first().attr('id', 'clear_me');
     button.removeClass('prev_button');
-    
     prev.resizable();
     
     button.itemButton();
@@ -112,55 +105,65 @@ $('#insert_button').click(function() {
 });
 
 /*******************************************************************************
+Delete - delete ITEM BUTTONS from database
+*******************************************************************************/
+$('#delete_button').click(function() {
+	$('.button_selected').addClass('button_deleted');
+	$('.button_selected').css('display', 'none');
+});
+
+/*******************************************************************************
 Save -
 *******************************************************************************/
 $('#save_button').click(function() {
     var buttons = [];
+    output = '';
+    
     // New Buttons
     $('.new_button').each(function(i, obj) {
         buttons[buttons.length] =  $(obj).itemButton('getJSON');
         $(obj).removeClass('new_button');
     });
+    
     var json = JSON.stringify(buttons).replace(/px/g, '');
     json = json.replace(/'/g, '');
     
     if(buttons.length > 0) {
-        $.ajax({   
-        	type: 'POST',
-            url: 'cgi/db_insert_item_buttons.php',
-            data: {'buttons' : json }, //JSON.stringify(buttons).replace(/px/g,'') },
-            dataType: 'json',
-            async: false,
-            success: function(res) {
-            	alert(res);
-            }
-        });
+    	$.ajax({
+    		type: 'POST',
+    		url: 'cgi/db_insert_item_buttons.php',
+    		data: { 'buttons' : json },
+    		datatype: 'json',
+    		async: false,
+    		success: function(data, textStatus, jqXHR) {
+    			output = data;
+    		}
+    	});
     }
     
    // Changed buttons
     buttons = [];
     $('.changed_button').each(function(i, obj) {
-        //alert('change');
         buttons[buttons.length] = $(obj).itemButton('getJSON');
-        buttons[buttons.length-1].item_index = $(obj).attr('id').replace('item_button_container_', '');
         $(obj).removeClass('changed_button');
     });
     json = JSON.stringify(buttons).replace(/px/g, '');
     json = json.replace(/'/g, '');
-    if(buttons.length > 0) {
-        $.ajax({   
-        	type: 'POST',
-            url: 'cgi/db_update_item_buttons.php',
-            data: {'buttons' : json }, //JSON.stringify(buttons).replace(/px/g,'') },
-            dataType: 'json',
-            async: false,
-            success: function(res) {
-            	alert(res);
-            }
-        });
-    }
     
+    if(buttons.length > 0) {
+    	$.ajax({
+    		type: 'POST',
+    		url: 'cgi/db_update_item_buttons.php',
+    		data: { 'buttons' : json },
+    		datatype: 'json',
+    		async: false,
+    		success: function(data, textStatus, jqXHR) {
+    			output += data;
+    		}
+    	});
+    }
     // Deleted buttons
+    // BUG: CHANGE THIS LIKE THE NEW AND CHANGED BUTTONS
     buttons = [];
     $('.deleted_button').each(function(i, obj) {
         //alert('adding to array');
@@ -180,6 +183,7 @@ $('#save_button').click(function() {
             }
         });
     }
+    tonySays('Menu Saved<br><br>' + output);
 });
 
 /******************************************************************************/
@@ -250,26 +254,29 @@ $('#bg_color input').simpleColor(color);
 
 
 $('#new_button_text').keyup(function() {
-    $('.button_selected .innerItemButton').html($(this).val());
+    $('.button_selected .innerItemButton').text($(this).val());
 });
 
+// What's this for?
 $('#border_width').val( $('.button_selected .innerItemButton').css('width'));
 
 
-$('#save_button').posButton( { text: 'Save' } );
-$('#insert_button').posButton( { text: 'Insert' } );
+$('#save_button').posButton({ text: 'Save' });
+$('#insert_button').posButton({ text: 'Paste' });
+$('#copy_button').posButton({ text: 'Copy' });
+$('#delete_button').posButton({ text: 'Delete' });
 
-
-$('#dlg_no_menu').dialog( { autoOpen: false,
-                            modal: true,
-                            title: 'No Menu Selected!'
-                        } );
+$('#dlg_no_menu').dialog({
+	autoOpen: false,
+    modal: true,
+    title: 'No Menu Selected!'
+});
                         
 $('.prev_button').resizable();
 
 $('#btn_noImage').click(function() {
     $('.button_selected').css('background-image', '');
-    current_image_id = 0;
+    //current_image_id = 0;
 });
 
 $('#bgTransparent').click(function() {

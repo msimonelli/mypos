@@ -56,15 +56,19 @@ $(document).ready(function() {
 	 * Delegate clicks down to item buttons
 	 */
 	
-	$('#ui_menu_editor_middle').delegate('.item_button', 'click', function() {
+	$('#ui_menu_editor_middle').delegate('.item_button', 'mousedown', function() {
 		button = $(this);
 		$('.button_selected').removeClass('button_selected');
 		button.addClass('button_selected');
-		alert('removed and added class')
+		if(!button.hasClass('new_button'))
+			button.addClass('changed_button');
+		//alert('removed and added class')
 	});
-	
-	
-	
+
+	$('#ui_menu_editor_middle').delegate('.item_button', 'click', function() {
+		id = $(this).itemButton('getId');
+		alert(id);
+	});
 	
 	$('#menu_border_color').simpleColor( {
 		onSelect: function(color, e) {
