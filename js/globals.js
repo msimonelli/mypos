@@ -25,6 +25,10 @@ var pos_groups = {
         'right' : 'menu_editor_right.html',
         'middle' : 'menu_editor_middle.html',
         'bottomLeft' : 'menu_editor_bottomLeft.html'
+    },
+    'Config Editor' : {
+    	'left' : 'config_editor_left.html',
+    	'bottom' : 'admin_bottom.html'
     }
 };
 
@@ -38,15 +42,19 @@ function group_load(group)
     $('#ui_bottom_nav_bar').load(pos_groups[group].bottom);
     $('#ui_right_ticket_area').load(pos_groups[group].right);
     $('#ui_middle_area').load(pos_groups[group].middle);
-    //alert(pos_groups[group].bottomLeft);
     $('#ui_bottomleft').load(pos_groups[group].bottomLeft);
-    //$('#ui_bottomLeft').html('test');
 }
 
 function tonySays(msg)
 {
+	$('#dlg_tonySay>div>div>p').css('font-family', 'Playball');
 	$('#dlg_tonySay>div>div>p').html(msg);
 	$('#dlg_tonySay').dialog('open');
-	//$('#dlg_tonySay').css('z-index', 20000)
-	//alert('function');
 }
+
+// Get Fonts and build CSS
+$.post('cgi/db_get_font_css.php', function(result) {
+	var arr = JSON.parse(result);
+	$('head').append(arr.css);
+	fonts = arr.fonts;
+});

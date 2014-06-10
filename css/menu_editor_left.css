@@ -1,19 +1,51 @@
 @CHARSET "ISO-8859-1";
 
-.item_button {
+.item_button, .ib_prev {
 	position: absolute;
-	display: table;
-	width: 250px;
-	height: 30px;
+	background-color: transparent;
+	width: 200px;
+	height: 50px;
+	border-radius: 25px;
+	background-color: transparent;
+	border: none;
+}
+
+/* background color gets set here */
+.item_button .ib_wrapper, .ib_prev .ib_wrapper {
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	right: 5px;
+	bottom: 5px;
+	background-color: pink;
+	width: auto;
+	height: auto;
+	border-radius: 25px;
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 }
 
-.item_button .innerItemButton {
+.item_button .ib_table, .ib_prev .ib_table {
+	display: table;
+	table-layout: fixed;
 	width: 100%;
 	height: 100%;
-	position: relative;
+}
+
+.item_button > div > div > div > span, .ib_prev > div > div > div > span {
 	display: table-cell;
-	background-size: 100% 100%;
-	background-repeat: no-repeat;
+	vertical-align: middle;
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	word-wrap: break-word;
+}
+
+.button_selected {
+	background-color: yellow;
+	border: 1px solid black;
+}
+
+.button_deleted {
+	display: none;
 }

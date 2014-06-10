@@ -1,0 +1,47 @@
+<script src="js/jquery-1.10.2.js"></script>
+<script src="js/jquery-ui-1.10.4.custom.js"></script>
+<link rel='stylesheet' href='css/blue-theme/jquery-ui-1.10.4.custom.css'>
+
+<style>
+.item_button {
+	background-color: transparent;
+	width: 100px;
+	height: 100px;
+	border-radius: 25px;
+}
+
+.item_button div:first-child {
+	position: absolute;
+	top: 5px;
+	bottom: 5px;
+	left: 5px;
+	right: 5px;
+	background-color: purple;
+	//background-image: url('images/backgrounds/red.png');
+	background-size: 100% 100%;
+	border-radius: 25px;
+}
+
+.item_button:hover {
+	background-color: yellow;
+	border: 2px solid purple;
+}
+</style>
+
+<script>
+$(document).ready(function() {
+	$('.item_button').resizable();
+	$('.item_button').draggable();
+	
+	//$('.item_button div').resizable();
+});
+</script>
+
+<body>
+<div class='item_button'>
+	<div>
+		<span>Test</span>
+	</div>
+</div>
+
+</body>

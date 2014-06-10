@@ -77,8 +77,9 @@ $(document).ready(function() {
 	    
 	    // New Buttons
 	    $('.new_button').each(function(i, obj) {
-	        buttons[buttons.length] =  $(obj).itemButton('getJSON');
-	        $(obj).removeClass('new_button');
+	    	var $obj = $(obj);
+	        buttons[buttons.length] =  $obj.itemButton('getJSON');
+	        $obj.removeClass('new_button');
 	    });
 	    
 	    var json = JSON.stringify(buttons).replace(/px/g, '');
@@ -100,8 +101,9 @@ $(document).ready(function() {
 	   // Changed buttons
 	    buttons = [];
 	    $('.changed_button').each(function(i, obj) {
-	        buttons[buttons.length] = $(obj).itemButton('getJSON');
-	        $(obj).removeClass('changed_button');
+	    	var $obj = $(obj);
+	        buttons[buttons.length] = $obj.itemButton('getJSON');
+	        $obj.removeClass('changed_button');
 	    });
 	    json = JSON.stringify(buttons).replace(/px/g, '');
 	    json = json.replace(/'/g, '');

@@ -3,8 +3,6 @@
  */
 
 $(document).ready(function() {
-
-
 /*******************************************************************************
     Delegate clicks from container down to menu buttons
 *******************************************************************************/
@@ -13,51 +11,31 @@ $('#pos_left_nav_bar_container').delegate('.menu_button', 'click', function() {
 	$('.menu_button_selected').removeClass('menu_button_selected');
 	$(this).addClass('menu_button_selected');
 	
-    current_menu_id = this.id.replace('menu_button', '');
+    var current_menu_id = this.id.replace('menu_button', '');
 
-    // clear out anything in the middle
-    //$('#ui_middle_area').load('menu_editor_middle.html');
+    // clear out any buttons in the middle
     $('#ui_menu_editor_middle .item_button').remove();
 
-    //var data =  { query: 'SELECT * FROM item_buttons_tbl B LEFT JOIN button_images_tbl I on B.image_id = I.button_img_idx WHERE menu_id = ' + current_menu_id };
     var data = { menu_id: current_menu_id };
-    
-    //$.post('cgi/db_simple_select.php', data, function(result) {
+
     $.post('cgi/db_get_item_buttons.php', data, function(result) {
 		if(result == 'null') {
-			alert('No buttons yet');
+			// No buttons on this menu
 			return;
 		}
     
-		var arr = eval(result);
-		
+		var arr = eval(result);		
 		for(var x=0; x < arr.length; x++)
-		{
-			str  = '<div class="item_button">';
-			str += '  <span class="innerItemButton">';
-			str +=      arr[x].other.text;
-			str += '  </span>';
-			str += '</div>';
-		
-			//$('#ui_middle_area').append(str);
-			
-			$('#ui_menu_editor_middle').append(str);
-			
-			button = $('#ui_middle_area .item_button:last-child');
-			inner = $('#ui_middle_area .innerItemButton:last-child');
-			
-			button.css(arr[x].outerCss);
-			inner.css(arr[x].innerCss);
-		
-			button.itemButton();
-			button.itemButton('setAll', arr[x].other);
-			
-			button.resizable( { containment: 'parent' } );
-			button.draggable( { containment: 'parent' } );
-			//button.itemButton();
-			//button.itemButton('setAll', arr[x].other);
+		{			
+			$('#ui_menu_editor_middle').append("<div class='item_button'</div>");
+			var $button = $('#ui_menu_editor_middle').children('.item_button').last();
+			$button.itemButton();
+			$button.itemButton('setCss', arr[x].outerCss, arr[x].innerCss);
+			$button.itemButton('setText', arr[x].other.text);
+			$button.itemButton('setAll', arr[x].other);
+			$button.resizable( { containment: 'parent' } );
+			$button.draggable( { containment: 'parent' } );
 		}
-		
 	});
 });
 /*******************************************************************************
